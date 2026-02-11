@@ -1,21 +1,20 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-11T14:20:55.288Z",
+  "generatedAt": "2026-02-11T14:32:36.562Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 2,
-    "implemented": 2,
+    "total": 4,
+    "implemented": 4,
     "items": [
       {
-        "id": "REQ-10",
-        "summary": "Add a small, simple corner image of the girlfriend using the user-uploaded photo, styled to be decorative and non-intrusive (e.g., small size, rounded corners/circle, subtle border/shadow), and ensure it appears consistently on both the initial and success screens without obstructing existing content or controls.",
+        "id": "REQ-11",
+        "summary": "Update the initial proposal screen copy to use a fixed greeting and fixed message text (no user-editable fields): change the greeting to exactly “Hey Bhoomi,” and insert the following message text immediately before the “Will you be my Valentine?” question:\n\nni tu ikk vaari keh de ke,\n\"mai teri aan\"\ndekhin,'taarun kiven mull tere pyar da",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/public/assets/generated/girlfriend-corner.dim_256x256.png",
           "frontend/src/App.tsx"
         ],
         "matchedFiles": [
@@ -23,8 +22,19 @@
         ]
       },
       {
-        "id": "REQ-9",
-        "summary": "Remove the “Earned It — The Weeknd” song from the Valentine page by eliminating any Weeknd-specific labeling and not hardcoding the audio source to an “earned-it” file; keep the existing local-audio-only playback controls (play/pause, mute, volume) but make the UI copy generic so users can supply their own local audio file.",
+        "id": "REQ-12",
+        "summary": "Remove the personalization UI and related state so the page no longer shows any fields such as “Her Name”, “Personal Message”, or “Affirmation”, and the proposal uses only the fixed copy.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-13",
+        "summary": "Remove background music functionality and UI from the page (including playback controls), so nothing related to music appears in either the initial or success screens.",
         "status": "implemented",
         "plannedFiles": [
           "frontend/src/App.tsx",
@@ -33,6 +43,17 @@
         "matchedFiles": [
           "frontend/src/App.tsx",
           "frontend/src/hooks/useLocalAudio.ts"
+        ]
+      },
+      {
+        "id": "REQ-14",
+        "summary": "Remove the girlfriend corner photo from the UI so no personal photo/picture is displayed on either the initial or success screens.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/App.tsx"
         ]
       }
     ]

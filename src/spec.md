@@ -1,12 +1,14 @@
 # Specification
 
 ## Summary
-**Goal:** Make the Valentine page’s music feature generic (no Weeknd reference) and add a small decorative girlfriend corner photo on both the initial and success screens.
+**Goal:** Update the proposal’s on-screen copy for Bhoomi and simplify the UI by removing personalization, music, and photo elements.
 
 **Planned changes:**
-- Remove all “Earned It — The Weeknd” labeling and any Weeknd-specific references from the music UI.
-- Stop hardcoding the audio source to an “earned-it” filename; keep play/pause, mute, and volume controls working with a local/static audio file.
-- Add a clear English help/error message when the local audio file is missing.
-- Add a small, polished corner avatar-style girlfriend photo (rounded with subtle border/shadow) as a static frontend asset, shown consistently on both the initial and success views without covering key content/controls.
+- Change the initial proposal greeting headline to exactly: “Hey Bhoomi,”
+- Insert the provided fixed message text between the greeting and the “Will you be my Valentine?” line.
+- Ensure “Will you be my Valentine?” remains present and has no trailing emoji.
+- Remove all personalization UI and related state (no name/message/affirmation fields anywhere).
+- Remove all background music functionality and UI (no audio initialization or controls).
+- Remove the corner girlfriend photo so no personal image appears on initial or success screens.
 
-**User-visible outcome:** The Valentine page no longer mentions The Weeknd or a specific track; users see generic local-audio controls with guidance if the audio file isn’t present, and a small girlfriend photo appears neatly in a corner on both the opening and success screens.
+**User-visible outcome:** The page shows a fixed Valentine proposal for Bhoomi with the specified message, and no longer displays any personalization inputs, music controls, or personal photo.

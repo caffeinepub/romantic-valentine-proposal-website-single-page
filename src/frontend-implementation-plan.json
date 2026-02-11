@@ -1,49 +1,73 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Generic local music + girlfriend corner image on Valentine screens",
+  "title": "Fix Bhoomi proposal copy and remove personalization, music, and photo UI",
   "requirements": [
     {
-      "id": "REQ-9",
-      "summary": "Remove Weeknd-specific song labeling and avoid hardcoding the audio source to an “earned-it” file while keeping local-only playback controls with clear missing-audio guidance.",
+      "id": "REQ-11",
+      "summary": "Change initial proposal copy to fixed “Hey Bhoomi,” greeting and insert the provided Punjabi message before the Valentine question.",
       "acceptanceCriteria": [
-        "The music section does not display the text “Earned It — The Weeknd” anywhere in the UI.",
-        "The app does not hardcode the audio source to /assets/audio/earned-it.mp3 (or any Weeknd-specific filename).",
-        "Music controls (play/pause and mute/volume slider) remain available and continue to work with local static audio files.",
-        "If the audio file is missing, the UI still shows a clear, English error/help message indicating the user must add a local audio file."
+        "On the initial screen, the headline displays exactly “Hey Bhoomi,” (including the comma).",
+        "The provided message text appears between the greeting and the “Will you be my Valentine?” line.",
+        "The “Will you be my Valentine?” text remains present and has no trailing emoji.",
+        "There are no inputs or settings that change the name/message/affirmation used in the proposal text."
       ],
       "file_operations": [
         {
           "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Update the Valentine page music section to (1) use a generic local static audio filename (not an “earned-it”/Weeknd-specific path), (2) change the UI title/copy to generic wording (e.g., “Background music”), and (3) display a clear help message telling the user to add a local audio file when missing, while preserving the existing play/pause and mute/volume UI behavior."
-        },
-        {
-          "path": "frontend/src/hooks/useLocalAudio.ts",
-          "operation": "modify",
-          "description": "Refine the missing-audio error/help messaging (English, user-actionable) to align with the generic local static audio setup, without introducing any external/streaming sources."
+          "description": "Update the initial proposal text block to use fixed copy only: set the greeting to exactly “Hey Bhoomi,” and insert the message text (with line breaks preserved):\n\nni tu ikk vaari keh de ke,\n\"mai teri aan\"\ndekhin,'taarun kiven mull tere pyar da\n\nEnsure “Will you be my Valentine?” remains present and does not include any trailing emoji. Verify the component's usage instructions before implementing."
         }
       ]
     },
     {
-      "id": "REQ-10",
-      "summary": "Add a small decorative girlfriend corner image shown consistently on both initial and success views as a static frontend asset with polished styling and non-obstructive placement.",
+      "id": "REQ-12",
+      "summary": "Remove personalization UI/state so no user-editable name/message/affirmation is used on initial or success screens.",
       "acceptanceCriteria": [
-        "A small girlfriend photo is visible in a page corner (consistent placement) on both the initial and success views.",
-        "The corner image does not cover the proposal text, buttons, or (remaining) music controls on common mobile and desktop viewport sizes.",
-        "The image is served as a static asset from the frontend (no backend fetching).",
-        "The corner image has simple, polished styling (e.g., rounded shape and subtle border/shadow) consistent with the existing romantic theme."
+        "The personalization card/section is not rendered on the page.",
+        "No text inputs for name/message/affirmation are visible.",
+        "The proposal and success screens do not reference or display user-provided name/message/affirmation values."
       ],
       "file_operations": [
         {
-          "path": "frontend/public/assets/generated/girlfriend-corner.dim_256x256.png",
-          "operation": "create",
-          "description": "Add the generated corner avatar-style crop asset at frontend/public/assets/generated/girlfriend-corner.dim_256x256.png (from “WhatsApp Image 2026-02-11 at 19.46.32.jpeg”) for static serving."
-        },
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Remove personalization state (name/message/affirmation), remove the personalization card (Label/Input fields), and remove any derived display variables that read user input. Update the success screen copy to not reference any user-provided values (use fixed text only). Keep the existing single-page flow and current Yes/No interaction behavior. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "summary": "Remove background music functionality and controls so the app never initializes or uses the local audio hook.",
+      "acceptanceCriteria": [
+        "No music controls (play/pause, mute, volume slider, or “Background Music” label) are rendered on any screen.",
+        "The app does not initialize or use the local audio hook for background music."
+      ],
+      "file_operations": [
         {
           "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Render the new static corner image frontend/public/assets/generated/girlfriend-corner.dim_256x256.png in a consistent corner position on both the initial and success views with small size, rounded/circle styling, and subtle border/shadow; ensure layout/z-index and spacing prevent overlap with existing music controls, proposal text, and buttons across common mobile/desktop sizes."
+          "description": "Remove all background music UI (the MusicControls card and its placement) and remove the useLocalAudio import and initialization so no audio logic runs on initial or success screens. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useLocalAudio.ts",
+          "operation": "delete",
+          "description": "Delete the unused local audio hook implementation to prevent accidental reintroduction of background music behavior."
+        }
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "summary": "Remove the corner girlfriend photo so no personal image is displayed on initial or success screens.",
+      "acceptanceCriteria": [
+        "No corner image/photo is rendered on any screen.",
+        "No broken-image placeholder appears in the corner areas where the image previously displayed."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Remove the CornerImage component and any rendering of it in both initial and success screens to ensure no personal photo/corner image is displayed and no broken image placeholder appears. Verify the component's usage instructions before implementing."
         }
       ]
     }

@@ -1,70 +1,92 @@
 {
   "kind": "build_request",
-  "title": "Remove Weeknd track reference and add girlfriend photo corner image",
+  "title": "Update proposal copy for Bhoomi and remove music/photo/personalization UI",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-9",
-      "text": "Remove the “Earned It — The Weeknd” song from the Valentine page by eliminating any Weeknd-specific labeling and not hardcoding the audio source to an “earned-it” file; keep the existing local-audio-only playback controls (play/pause, mute, volume) but make the UI copy generic so users can supply their own local audio file.",
+      "id": "REQ-11",
+      "text": "Update the initial proposal screen copy to use a fixed greeting and fixed message text (no user-editable fields): change the greeting to exactly “Hey Bhoomi,” and insert the following message text immediately before the “Will you be my Valentine?” question:\n\nni tu ikk vaari keh de ke,\n\"mai teri aan\"\ndekhin,'taarun kiven mull tere pyar da",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "recent-messages-4"
+          "msg-1"
         ],
         "quotes": [
-          "remove weeknd song"
+          "instead of hey beautiful i need , hey bhoomi, then i need this message to be there\"ni tu ikk vaari keh de ke,\"mai teri aan\"dekhin,'taarun kiven mull tere pyar da\", before will u be my valentine"
         ]
       },
       "acceptanceCriteria": [
-        "The music section does not display the text “Earned It — The Weeknd” anywhere in the UI.",
-        "The app does not hardcode the audio source to /assets/audio/earned-it.mp3 (or any Weeknd-specific filename).",
-        "Music controls (play/pause and mute/volume slider) remain available and continue to work with local static audio files.",
-        "If the audio file is missing, the UI still shows a clear, English error/help message indicating the user must add a local audio file."
+        "On the initial screen, the headline displays exactly “Hey Bhoomi,” (including the comma).",
+        "The provided message text appears between the greeting and the “Will you be my Valentine?” line.",
+        "The “Will you be my Valentine?” text remains present and has no trailing emoji.",
+        "There are no inputs or settings that change the name/message/affirmation used in the proposal text."
       ]
     },
     {
-      "id": "REQ-10",
-      "text": "Add a small, simple corner image of the girlfriend using the user-uploaded photo, styled to be decorative and non-intrusive (e.g., small size, rounded corners/circle, subtle border/shadow), and ensure it appears consistently on both the initial and success screens without obstructing existing content or controls.",
+      "id": "REQ-12",
+      "text": "Remove the personalization UI and related state so the page no longer shows any fields such as “Her Name”, “Personal Message”, or “Affirmation”, and the proposal uses only the fixed copy.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "recent-messages-4"
+          "msg-1"
         ],
         "quotes": [
-          "add a simple image of her in corner"
+          "no personalised mssg for her ok"
         ]
       },
       "acceptanceCriteria": [
-        "A small girlfriend photo is visible in a page corner (consistent placement) on both the initial and success views.",
-        "The corner image does not cover the proposal text, buttons, or (remaining) music controls on common mobile and desktop viewport sizes.",
-        "The image is served as a static asset from the frontend (no backend fetching).",
-        "The corner image has simple, polished styling (e.g., rounded shape and subtle border/shadow) consistent with the existing romantic theme."
+        "The personalization card/section is not rendered on the page.",
+        "No text inputs for name/message/affirmation are visible.",
+        "The proposal and success screens do not reference or display user-provided name/message/affirmation values."
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "text": "Remove background music functionality and UI from the page (including playback controls), so nothing related to music appears in either the initial or success screens.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "i dont need any music"
+        ]
+      },
+      "acceptanceCriteria": [
+        "No music controls (play/pause, mute, volume slider, or “Background Music” label) are rendered on any screen.",
+        "The app does not initialize or use the local audio hook for background music."
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "text": "Remove the girlfriend corner photo from the UI so no personal photo/picture is displayed on either the initial or success screens.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "no pic"
+        ]
+      },
+      "acceptanceCriteria": [
+        "No corner image/photo is rendered on any screen.",
+        "No broken-image placeholder appears in the corner areas where the image previously displayed."
       ]
     }
   ],
   "constraints": [
-    "Do not modify files under frontend/src/components/ui (compose them instead).",
-    "Do not modify any files listed in frontend.immutablePaths.",
-    "Keep audio strictly local/static (no streaming embeds or external audio sources)."
+    "Frontend changes must not edit any files under frontend/src/components/ui or other paths listed as immutable in SYSTEM_CONTEXT.",
+    "Keep the existing single-page flow and existing Yes/No interaction behavior unless it directly conflicts with the copy/photo/music removals."
   ],
   "nonGoals": [
-    "No backend/canister changes (backend/main.mo remains unchanged).",
-    "No new authentication or data persistence features."
+    "Adding any background music support or audio asset instructions.",
+    "Displaying any user photo/corner image.",
+    "Reintroducing personalization inputs or any customizable message/name/affirmation fields.",
+    "Backend changes (backend is not needed for these updates)."
   ],
   "imageRequirements": {
     "required": [],
-    "edits": [
-      "Create a small, clean corner avatar-style crop from the uploaded photo (WhatsApp Image 2026-02-11 at 19.46.32.jpeg > girlfriend-corner.dim_256x256.png)"
-    ]
-  },
-  "userProfileUpdate": {
-    "goalsToAdd": [],
-    "goalsToRemove": [],
-    "preferencesToAdd": [],
-    "preferencesToRemove": [],
-    "miscToAdd": [],
-    "miscToRemove": [],
-    "fieldsToSet": {},
-    "fieldsToDelete": []
+    "edits": []
   }
 }

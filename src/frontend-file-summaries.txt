@@ -1,5 +1,5 @@
 {
-  "frontend/src/App.tsx": "Main Valentine's Day proposal component with personalization inputs, generic background music controls, playful dodging \"No\" button, success celebration with floating hearts, and a small circular girlfriend photo in the top-left corner on both views.",
+  "frontend/src/App.tsx": "Single-page Valentine's Day proposal for Bhoomi with fixed Punjabi message, playful dodging \"No\" button, and success celebration with floating hearts—no personalization inputs, music controls, or corner photo.",
   "frontend/src/index.css": "Global styles with romantic warm color palette (pinks, reds, cream) using OKLCH, custom animations for floating hearts and pulse effects, and display font configuration.",
   "frontend/tailwind.config.js": "Tailwind configuration extended with romantic color tokens, Georgia display font family, and custom theme values for the Valentine's Day aesthetic.",
   "frontend/src/hooks/useQueries.ts": "Empty queries file as this is a client-side only application with no backend data fetching required.",

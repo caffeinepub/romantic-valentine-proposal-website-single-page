@@ -1,30 +1,14 @@
 import { useState } from 'react';
-import { Heart, Sparkles, Play, Pause, Volume2, VolumeX } from 'lucide-react';
+import { Heart, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import { Card, CardContent } from '@/components/ui/card';
-import { Slider } from '@/components/ui/slider';
-import { useLocalAudio } from '@/hooks/useLocalAudio';
 
 type ViewState = 'initial' | 'success';
 
 export default function App() {
   const [viewState, setViewState] = useState<ViewState>('initial');
-  const [girlfriendName, setGirlfriendName] = useState('');
-  const [personalMessage, setPersonalMessage] = useState('');
-  const [affirmation, setAffirmation] = useState('');
   const [noButtonPosition, setNoButtonPosition] = useState({ x: 0, y: 0 });
   const [noClickCount, setNoClickCount] = useState(0);
-
-  const audio = useLocalAudio({
-    src: '/assets/audio/music.mp3',
-    autoPlay: false,
-  });
-
-  const displayName = girlfriendName.trim() || 'Beautiful';
-  const displayMessage = personalMessage.trim() || 'You make every day feel like Valentine\'s Day';
-  const displayAffirmation = affirmation.trim() || 'You are worth it, you deserve it.';
 
   const handleYesClick = () => {
     setViewState('success');
@@ -50,77 +34,6 @@ export default function App() {
   ];
 
   const currentNoMessage = noButtonMessages[Math.min(noClickCount, noButtonMessages.length - 1)];
-
-  // Music controls component
-  const MusicControls = () => (
-    <Card className="bg-white/95 backdrop-blur-sm border-romantic-accent/20 shadow-lg">
-      <CardContent className="p-4 space-y-3">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Heart className="text-romantic-accent" size={16} fill="currentColor" />
-            <span className="text-sm font-medium text-romantic-dark">Background Music</span>
-          </div>
-          <Button
-            onClick={audio.togglePlay}
-            disabled={!!audio.error || audio.isLoading}
-            size="sm"
-            variant="ghost"
-            className="h-8 w-8 p-0 hover:bg-romantic-accent/10"
-          >
-            {audio.isPlaying ? (
-              <Pause className="h-4 w-4 text-romantic-accent" />
-            ) : (
-              <Play className="h-4 w-4 text-romantic-accent" />
-            )}
-          </Button>
-        </div>
-
-        {audio.error ? (
-          <p className="text-xs text-romantic-medium/70 italic">
-            {audio.error}
-          </p>
-        ) : (
-          <div className="flex items-center gap-3">
-            <Button
-              onClick={audio.toggleMute}
-              size="sm"
-              variant="ghost"
-              className="h-8 w-8 p-0 hover:bg-romantic-accent/10 flex-shrink-0"
-            >
-              {audio.isMuted ? (
-                <VolumeX className="h-4 w-4 text-romantic-medium" />
-              ) : (
-                <Volume2 className="h-4 w-4 text-romantic-accent" />
-              )}
-            </Button>
-            <Slider
-              value={[audio.isMuted ? 0 : audio.volume * 100]}
-              onValueChange={(values) => {
-                audio.setVolume(values[0] / 100);
-                if (audio.isMuted && values[0] > 0) {
-                  audio.toggleMute();
-                }
-              }}
-              max={100}
-              step={1}
-              className="flex-1"
-            />
-          </div>
-        )}
-      </CardContent>
-    </Card>
-  );
-
-  // Corner image component
-  const CornerImage = () => (
-    <div className="absolute top-4 left-4 z-20">
-      <img 
-        src="/assets/generated/girlfriend-corner.dim_256x256.png" 
-        alt="Her" 
-        className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover border-2 border-white shadow-lg"
-      />
-    </div>
-  );
 
   if (viewState === 'success') {
     return (
@@ -151,14 +64,6 @@ export default function App() {
           ))}
         </div>
 
-        {/* Corner image - top left */}
-        <CornerImage />
-
-        {/* Music controls - top right */}
-        <div className="absolute top-4 right-4 z-20 w-80 max-w-[calc(100vw-2rem)]">
-          <MusicControls />
-        </div>
-
         {/* Success content */}
         <Card className="relative z-10 max-w-2xl w-full bg-white/95 backdrop-blur-sm border-romantic-accent/20 shadow-2xl">
           <CardContent className="p-8 md:p-12 text-center space-y-6">
@@ -175,13 +80,10 @@ export default function App() {
                 Yay! 💕
               </h1>
               <p className="text-2xl md:text-3xl font-display text-romantic-medium">
-                {displayName}, you just made me the happiest person alive!
+                Bhoomi, you just made me the happiest person alive!
               </p>
               <p className="text-lg md:text-xl text-romantic-dark/80 max-w-lg mx-auto leading-relaxed">
                 I can't wait to spend this Valentine's Day with you. Get ready for an amazing time together! 🌹
-              </p>
-              <p className="text-xl md:text-2xl font-display text-romantic-accent italic pt-4">
-                {displayAffirmation}
               </p>
             </div>
 
@@ -220,58 +122,8 @@ export default function App() {
       />
       <div className="absolute inset-0 bg-gradient-to-br from-romantic-light/90 via-romantic-medium/85 to-romantic-dark/90" />
 
-      {/* Corner image - top left */}
-      <CornerImage />
-
-      {/* Music controls - top right */}
-      <div className="absolute top-4 right-4 z-20 w-80 max-w-[calc(100vw-2rem)]">
-        <MusicControls />
-      </div>
-
       {/* Main content */}
       <div className="relative z-10 max-w-4xl w-full space-y-8">
-        {/* Customization card */}
-        <Card className="bg-white/95 backdrop-blur-sm border-romantic-accent/20 shadow-xl">
-          <CardContent className="p-6 space-y-4">
-            <h3 className="text-lg font-semibold text-romantic-dark flex items-center gap-2">
-              <Sparkles className="text-romantic-accent" size={20} />
-              Personalize Your Message
-            </h3>
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="name" className="text-romantic-dark">Her Name</Label>
-                <Input
-                  id="name"
-                  placeholder="Enter her name..."
-                  value={girlfriendName}
-                  onChange={(e) => setGirlfriendName(e.target.value)}
-                  className="border-romantic-accent/30 focus:border-romantic-accent focus:ring-romantic-accent"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="message" className="text-romantic-dark">Personal Message (Optional)</Label>
-                <Input
-                  id="message"
-                  placeholder="Add a sweet message..."
-                  value={personalMessage}
-                  onChange={(e) => setPersonalMessage(e.target.value)}
-                  className="border-romantic-accent/30 focus:border-romantic-accent focus:ring-romantic-accent"
-                />
-              </div>
-              <div className="space-y-2 md:col-span-2">
-                <Label htmlFor="affirmation" className="text-romantic-dark">Affirmation (Optional)</Label>
-                <Input
-                  id="affirmation"
-                  placeholder="You are worth it, you deserve it."
-                  value={affirmation}
-                  onChange={(e) => setAffirmation(e.target.value)}
-                  className="border-romantic-accent/30 focus:border-romantic-accent focus:ring-romantic-accent"
-                />
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
         {/* Proposal card */}
         <Card className="bg-white/95 backdrop-blur-sm border-romantic-accent/20 shadow-2xl">
           <CardContent className="p-8 md:p-12 text-center space-y-8">
@@ -285,13 +137,12 @@ export default function App() {
 
             <div className="space-y-4">
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-romantic-dark leading-tight">
-                Hey {displayName}!
+                Hey Bhoomi,
               </h1>
-              <p className="text-xl md:text-2xl text-romantic-medium font-medium">
-                {displayMessage}
-              </p>
-              <p className="text-lg md:text-xl text-romantic-accent italic font-display">
-                {displayAffirmation}
+              <p className="text-xl md:text-2xl text-romantic-medium font-medium whitespace-pre-line">
+                ni tu ikk vaari keh de ke,{'\n'}
+                "mai teri aan"{'\n'}
+                dekhin,'taarun kiven mull tere pyar da
               </p>
               <p className="text-2xl md:text-4xl font-display font-semibold text-romantic-dark pt-4">
                 Will you be my Valentine?
