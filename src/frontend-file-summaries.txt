@@ -1,0 +1,8 @@
+{
+  "frontend/src/App.tsx": "Main Valentine's Day proposal component with personalization inputs, generic background music controls, playful dodging \"No\" button, success celebration with floating hearts, and a small circular girlfriend photo in the top-left corner on both views.",
+  "frontend/src/index.css": "Global styles with romantic warm color palette (pinks, reds, cream) using OKLCH, custom animations for floating hearts and pulse effects, and display font configuration.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with romantic color tokens, Georgia display font family, and custom theme values for the Valentine's Day aesthetic.",
+  "frontend/src/hooks/useQueries.ts": "Empty queries file as this is a client-side only application with no backend data fetching required.",
+  "frontend/src/hooks/useLocalAudio.ts": "Custom React hook that manages HTMLAudioElement for local static audio files with generic music.mp3 source, providing play/pause controls, volume/mute functionality, and clear error messaging for missing files.",
+  "frontend/public/assets/audio/README.md": "Documentation instructing users how to add their own legal audio files to enable music playback in the Valentine's Day proposal application."
+}

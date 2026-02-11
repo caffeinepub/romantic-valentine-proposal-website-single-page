@@ -1,2 +1,3 @@
-# romantic-valentine-proposal-website-single-page
-Exported from Caffeine project: Romantic Valentine proposal website (single-page)
+## 
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`

@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 1rem;
+        
+        /* Romantic warm palette - pinks, reds, cream */
+        --romantic-light: 0.97 0.02 15;
+        --romantic-medium: 0.75 0.15 15;
+        --romantic-dark: 0.45 0.12 15;
+        --romantic-accent: 0.65 0.22 10;
+        --romantic-cream: 0.95 0.01 50;
+        
+        --background: var(--romantic-cream);
+        --foreground: var(--romantic-dark);
+        --card: 1 0 0;
+        --card-foreground: var(--romantic-dark);
+        --popover: 1 0 0;
+        --popover-foreground: var(--romantic-dark);
+        --primary: var(--romantic-accent);
+        --primary-foreground: 1 0 0;
+        --secondary: var(--romantic-light);
+        --secondary-foreground: var(--romantic-dark);
+        --muted: var(--romantic-light);
+        --muted-foreground: var(--romantic-medium);
+        --accent: var(--romantic-accent);
+        --accent-foreground: 1 0 0;
+        --destructive: 0.577 0.245 27.325;
+        --destructive-foreground: 0.985 0 0;
+        --border: 0.90 0.02 15;
+        --input: 0.90 0.02 15;
+        --ring: var(--romantic-accent);
+        --chart-1: 0.646 0.222 41.116;
+        --chart-2: 0.6 0.118 184.704;
+        --chart-3: 0.398 0.07 227.392;
+        --chart-4: 0.828 0.189 84.429;
+        --chart-5: 0.769 0.188 70.08;
+    }
+
+    .dark {
+        --romantic-light: 0.25 0.08 15;
+        --romantic-medium: 0.55 0.15 15;
+        --romantic-dark: 0.85 0.05 15;
+        --romantic-accent: 0.70 0.20 10;
+        --romantic-cream: 0.15 0.02 15;
+        
+        --background: var(--romantic-cream);
+        --foreground: var(--romantic-dark);
+        --card: 0.20 0.05 15;
+        --card-foreground: var(--romantic-dark);
+        --popover: 0.20 0.05 15;
+        --popover-foreground: var(--romantic-dark);
+        --primary: var(--romantic-accent);
+        --primary-foreground: 0.15 0.02 15;
+        --secondary: var(--romantic-light);
+        --secondary-foreground: var(--romantic-dark);
+        --muted: var(--romantic-light);
+        --muted-foreground: var(--romantic-medium);
+        --accent: var(--romantic-accent);
+        --accent-foreground: 0.95 0.01 15;
+        --destructive: 0.704 0.191 22.216;
+        --destructive-foreground: 0.95 0.01 15;
+        --border: 0.30 0.05 15;
+        --input: 0.30 0.05 15;
+        --ring: var(--romantic-accent);
+    }
+
+    * {
+        @apply border-border;
+    }
+    
+    body {
+        @apply bg-background text-foreground;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    }
+}
+
+@layer utilities {
+    .font-display {
+        font-family: 'Georgia', 'Cambria', 'Times New Roman', serif;
+    }
+    
+    @keyframes float-heart {
+        0% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 0;
+        }
+        10% {
+            opacity: 0.8;
+        }
+        90% {
+            opacity: 0.8;
+        }
+        100% {
+            transform: translateY(-100vh) rotate(360deg);
+            opacity: 0;
+        }
+    }
+    
+    @keyframes pulse-slow {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.1);
+        }
+    }
+    
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .animate-float-heart {
+        animation: float-heart linear infinite;
+    }
+    
+    .animate-pulse-slow {
+        animation: pulse-slow 2s ease-in-out infinite;
+    }
+    
+    .animate-fade-in {
+        animation: fade-in 0.5s ease-out;
+    }
+}

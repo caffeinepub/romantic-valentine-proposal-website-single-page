@@ -1,0 +1,42 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-remove-the-earned-it-the-weeknd-song-from-the-valentine-page-by-eliminating-any-weeknd-specific-labeling-and-not-hardcoding-the-audio-source-to-an-earned-it-file-keep-the-existing-local-audio-only-playback-controls-play-pause-mute-volume-but-make-the-ui-copy-generic-so-users-can-supply-their-own-local-audio-file",
+      "featureTitle": "Remove the “Earned It — The Weeknd” song from the Valentine page by eliminating any Weeknd-specific labeling and not hardcoding the audio source to an “earned-it” file; keep the existing local-audio-only playback controls (play/pause, mute, volume) but make the UI copy generic so users can supply their own local audio file.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/hooks/useLocalAudio.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-small-simple-corner-image-of-the-girlfriend-using-the-user-uploaded-photo-styled-to-be-decorative-and-non-intrusive-e-g-small-size-rounded-corners-circle-subtle-border-shadow-and-ensure-it-appears-consistently-on-both-the-initial-and-success-screens-without-obstructing-existing-content-or-controls",
+      "featureTitle": "Add a small, simple corner image of the girlfriend using the user-uploaded photo, styled to be decorative and non-intrusive (e.g., small size, rounded corners/circle, subtle border/shadow), and ensure it appears consistently on both the initial and success screens without obstructing existing content or controls.",
+      "files": [
+        "frontend/src/App.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

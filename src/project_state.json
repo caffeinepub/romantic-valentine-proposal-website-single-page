@@ -1,0 +1,117 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 9,
+  "summary": "Build a simple romantic website to ask the user's girlfriend to be their Valentine.",
+  "architectural_notes": [
+    "If adding music, use an embedded player or locally hosted audio with simple play/pause + mute controls; confirm licensing/availability for any copyrighted tracks.",
+    "For the corner photo, use a user-provided local static image asset and display it as a small fixed/absolute positioned element in a corner with responsive sizing."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Edit Images\n- Create a small, clean corner avatar-style crop from the uploaded photo (WhatsApp Image 2026-02-11 at 19.46.32.jpeg > girlfriend-corner.dim_256x256.png)",
+  "existing_features": [
+    {
+      "id": "feature-create-a-single-page-website-that-asks-the-user-s-girlfriend-to-be-their-valentine-with-clear-romantic-copy-in-english-and-a-centered-mobile-friendly-layout",
+      "title": "Create a single-page website that asks the user's girlfriend to be their Valentine, with clear romantic copy in English and a centered, mobile-friendly layout.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-interactive-response-behavior-clicking-yes-shows-a-celebratory-success-state-e-g-sweet-confirmation-message-and-simple-animation-and-clicking-no-shows-a-playful-non-hurtful-alternate-interaction-e-g-changes-the-message-or-makes-opting-out-harder-without-being-offensive",
+      "title": "Add interactive response behavior: clicking “Yes” shows a celebratory success state (e.g., sweet confirmation message and simple animation), and clicking “No” shows a playful, non-hurtful alternate interaction (e.g., changes the message or makes opting out harder without being offensive).",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-include-a-small-customization-area-simple-inline-editable-fields-or-a-minimal-settings-panel-to-set-the-girlfriend-s-name-and-an-optional-short-personalized-message-and-reflect-the-values-live-in-the-proposal-text",
+      "title": "Include a small customization area (simple inline editable fields or a minimal settings panel) to set the girlfriend’s name and an optional short personalized message, and reflect the values live in the proposal text.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-establish-and-apply-a-coherent-romantic-visual-theme-across-the-page-colors-typography-spacing-button-styles-with-a-distinct-style-avoid-default-template-look-and-keep-it-consistent-across-all-states-initial-yes-no",
+      "title": "Establish and apply a coherent romantic visual theme across the page (colors, typography, spacing, button styles) with a distinct style (avoid default/template look), and keep it consistent across all states (initial, Yes, No).",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-the-required-generated-images-as-static-assets-under-frontend-public-assets-generated-and-render-them-on-the-page-e-g-hero-background-and-small-decorative-icon-without-fetching-them-from-the-backend",
+      "title": "Add the required generated images as static assets under frontend/public/assets/generated and render them on the page (e.g., hero background and small decorative icon), without fetching them from the backend.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-the-heart-emoji-from-the-selected-paragraph-element-at-xpath-html-1-body-1-div-1-div-1-div-3-div-2-div-1-div-2-p-2-so-the-displayed-text-reads-exactly-will-you-be-my-valentine-no-trailing-emoji",
+      "title": "Remove the heart emoji from the selected paragraph element at XPath `/html[1]/body[1]/div[1]/div[1]/div[3]/div[2]/div[1]/div[2]/p[2]` so the displayed text reads exactly: \"Will you be my Valentine?\" (no trailing emoji).",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-background-music-support-to-the-valentine-page-with-simple-playback-controls-and-include-a-selectable-track-labeled-earned-it-the-weeknd-the-implementation-must-use-local-audio-files-served-as-static-assets-no-streaming-embeds-and-the-ui-must-clearly-indicate-the-user-needs-to-provide-the-audio-file-they-have-rights-to-use",
+      "title": "Add background music support to the Valentine page with simple playback controls, and include a selectable track labeled “Earned It — The Weeknd”. The implementation must use local audio files served as static assets (no streaming embeds), and the UI must clearly indicate the user needs to provide the audio file they have rights to use.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-an-optional-editable-affirmation-text-field-in-the-personalization-area-defaulting-to-exactly-you-are-worth-it-you-deserve-it-and-display-it-in-the-proposal-experience-e-g-under-the-personal-message-and-or-in-the-success-screen-as-plain-text-not-time-synced-lyrics",
+      "title": "Add an optional editable “Affirmation” text field in the personalization area, defaulting to exactly: “You are worth it, you deserve it.”, and display it in the proposal experience (e.g., under the personal message and/or in the success screen) as plain text (not time-synced lyrics).",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-the-earned-it-the-weeknd-song-from-the-valentine-page-by-eliminating-any-weeknd-specific-labeling-and-not-hardcoding-the-audio-source-to-an-earned-it-file-keep-the-existing-local-audio-only-playback-controls-play-pause-mute-volume-but-make-the-ui-copy-generic-so-users-can-supply-their-own-local-audio-file",
+      "title": "Remove the “Earned It — The Weeknd” song from the Valentine page by eliminating any Weeknd-specific labeling and not hardcoding the audio source to an “earned-it” file; keep the existing local-audio-only playback controls (play/pause, mute, volume) but make the UI copy generic so users can supply their own local audio file.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-small-simple-corner-image-of-the-girlfriend-using-the-user-uploaded-photo-styled-to-be-decorative-and-non-intrusive-e-g-small-size-rounded-corners-circle-subtle-border-shadow-and-ensure-it-appears-consistently-on-both-the-initial-and-success-screens-without-obstructing-existing-content-or-controls",
+      "title": "Add a small, simple corner image of the girlfriend using the user-uploaded photo, styled to be decorative and non-intrusive (e.g., small size, rounded corners/circle, subtle border/shadow), and ensure it appears consistently on both the initial and success screens without obstructing existing content or controls.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create a website that asks the user's girlfriend to be their Valentine (romantic proposal page).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Update background music feature to remove “Earned It — The Weeknd” from the selectable tracks (keep local-audio-only approach and other playback controls).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Add a simple image of the girlfriend displayed in a corner of the page (small, decorative, non-intrusive).",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "projectName": "Romantic Valentine proposal website (single-page)",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}
